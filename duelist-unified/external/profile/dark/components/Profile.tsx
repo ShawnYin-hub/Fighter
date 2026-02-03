@@ -1,6 +1,6 @@
 import React from 'react';
 import { UserStats } from '../types';
-import { authService } from '../../../../services/firebaseService';
+import { authService } from '../../../../services/supabaseService';
 import { useTheme } from '../../../../contexts/ThemeContext';
 
 interface ProfileProps {

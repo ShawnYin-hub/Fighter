@@ -116,3 +116,17 @@ export const dbService = {
   },
 };
 
+// 占位的 userService，接口兼容原来的 firebaseService，用于 Profile / 初始化流程
+export const userService = {
+  ensureUserProfile: async (_user: any) => {
+    // 这里可以后续接 Supabase 的 profile 表，现在先直接返回 null
+    return null;
+  },
+  getUserProfile: async (_uid: string) => {
+    return null;
+  },
+  updateUserProfile: async (_uid: string, _patch: any) => {
+    return null;
+  },
+};
+

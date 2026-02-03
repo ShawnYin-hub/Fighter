@@ -4,7 +4,7 @@ import StatCard from './components/StatCard';
 import SettingsItem from './components/SettingsItem';
 import { UserStats, DecisionAnalysis } from './types';
 import { analyzeDecisionStyle } from '../../../services/deepseekService';
-import { authService, userService, dbService } from '../../../services/firebaseService';
+import { authService, dbService } from '../../../services/supabaseService';
 import { useTheme } from '../../../contexts/ThemeContext';
 
 const LightProfile: React.FC = () => {
@@ -24,21 +24,14 @@ const LightProfile: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    // hydrate stats from firebase user profile if available (does not change UI layout)
-    const user = authService.getCurrentUser();
-    if (!user) return;
-    userService.ensureUserProfile(user).catch(() => {});
-    userService.getUserProfile(user.uid).then((p) => {
-      if (!p) return;
-      const handle = p.displayName || (p.email ? p.email.split('@')[0] : '0812');
-      setStats(prev => ({ ...prev, associateId: `#${handle}`.replace('##', '#') }));
-    }).catch(() => {});
+    // Supabase 版本暂不做 profile 表同步，这里保留默认 stats，不影响 UI
+    void authService.getCurrentUser();
   }, []);
 
-  const handleAccountClick = () => {
-    const user = authService.getCurrentUser();
-    if (user?.email) {
-      alert(`Current account: ${user.email}`);
+  const handleAccountClick = async () => {
+    const user = await authService.getCurrentUser();
+    if ((user as any)?.email) {
+      alert(`Current account: ${(user as any).email}`);
     } else {
       window.location.hash = '#/auth/login';
     }
@@ -53,12 +46,12 @@ const LightProfile: React.FC = () => {
     setIsAnalyzing(true);
     setView('loading');
     try {
-      const user = authService.getCurrentUser();
+      const user = await authService.getCurrentUser();
       let recentLog = '';
 
       if (user) {
         // Pull recent real decisions from Firestore/local, and synthesize a compact log string
-        const decisions: any[] = await dbService.getDecisions(user.uid, 20);
+        const decisions: any[] = await dbService.getDecisions((user as any).id, 20);
         if (decisions && decisions.length > 0) {
           recentLog = decisions
             .map(d => {

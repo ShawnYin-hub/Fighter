@@ -3,7 +3,7 @@ import Layout from './components/Layout';
 import Profile from './components/Profile';
 import DuelScreen from './components/DuelScreen';
 import { Screen, UserStats } from './types';
-import { authService, userService } from '../../../services/firebaseService';
+import { authService } from '../../../services/supabaseService';
 
 const DarkProfileApp: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.PROFILE);
@@ -17,14 +17,9 @@ const DarkProfileApp: React.FC = () => {
   });
 
   useEffect(() => {
-    const user = authService.getCurrentUser();
-    if (!user) return;
-    userService.ensureUserProfile(user).catch(() => {});
-    userService.getUserProfile(user.uid).then((p) => {
-      if (!p) return;
-      const handle = p.displayName || (p.email ? p.email.split('@')[0] : '0812');
-      setStats(prev => ({ ...prev, associateId: `#${handle}`.replace('##', '#') }));
-    }).catch(() => {});
+    // Supabase 版本暂不做 profile 表同步，这里保留默认 stats，不影响 UI
+    // （后续可以新增 profiles 表再补齐）
+    void authService.getCurrentUser();
   }, []);
 
   const renderScreen = () => {
