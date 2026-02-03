@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
-import { authService, userService } from '../../services/firebaseService';
+// import { authService, userService } from '../../services/firebaseService';
+import { authService } from '../../services/supabaseService';
 import LightLoginScreen from '../../external/auth/light/screens/LoginScreen';
 import { LoginScreen as DarkLoginScreen } from '../../external/auth/dark/screens/LoginScreen';
 import { useToast } from '../../contexts/ToastContext';
@@ -13,10 +14,7 @@ const LoginPage: React.FC = () => {
 
   const signIn = async (email: string, password: string) => {
     try {
-      const cred = await authService.signInWithEmail(email, password);
-      if (cred?.user) {
-        await userService.ensureUserProfile(cred.user);
-      }
+      await authService.signInWithEmail(email, password);
       navigate('/');
     } catch (e: any) {
       console.error(e);

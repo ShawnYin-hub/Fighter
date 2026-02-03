@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { Decision, DecisionBreakdown, Language } from './types';
-import { dbService, authService, userService } from './services/firebaseService';
+// import { dbService, authService, userService } from './services/firebaseService';
+import { dbService, authService } from './services/supabaseService';
 import { ToastProvider } from './contexts/ToastContext';
 
 // 导入所有屏幕组件

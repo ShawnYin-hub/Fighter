@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../contexts/ThemeContext';
-import { authService, userService } from '../../services/firebaseService';
+// import { authService, userService } from '../../services/firebaseService';
+import { authService } from '../../services/supabaseService';
 import LightSignUpScreen from '../../external/auth/light/screens/SignUpScreen';
 import { RegisterScreen as DarkRegisterScreen } from '../../external/auth/dark/screens/RegisterScreen';
 import { useToast } from '../../contexts/ToastContext';
@@ -13,10 +14,7 @@ const RegisterPage: React.FC = () => {
 
   const signUp = async (email: string, password: string, name: string) => {
     try {
-      const cred = await authService.signUpWithEmail(email, password, name);
-      if (cred?.user) {
-        await userService.ensureUserProfile(cred.user);
-      }
+      await authService.signUpWithEmail(email, password, name);
       navigate('/');
     } catch (e: any) {
       console.error(e);
