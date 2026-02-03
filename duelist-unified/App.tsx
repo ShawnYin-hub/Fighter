@@ -121,8 +121,8 @@ const AppContent: React.FC = () => {
     const unsubscribe = authService.onAuthStateChanged((authUser) => {
       setUser(authUser);
       if (authUser) {
-        userService.ensureUserProfile(authUser).catch(() => {});
-        loadDecisions(authUser.uid);
+        // Supabase 用户对象使用 id 作为主键
+        loadDecisions((authUser as any).uid || (authUser as any).id);
       } else {
         // 未登录时从 localStorage 加载
         const saved = localStorage.getItem('duelist_history');
