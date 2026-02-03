@@ -1,0 +1,8 @@
+
+{
+  "name": "Duelist Premium - Logical Excellence",
+  "description": "A high-end analytical platform for competitive reasoning, logical duels, and clarity scoring, featuring a premium dark gold aesthetic.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

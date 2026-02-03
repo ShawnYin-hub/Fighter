@@ -1,0 +1,8 @@
+
+{
+  "name": "Duelist",
+  "description": "A sophisticated decision-making companion that weighs conflicting choices through high-contrast visual duels and AI-powered logic genealogy.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

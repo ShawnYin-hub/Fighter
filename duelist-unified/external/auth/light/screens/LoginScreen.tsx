@@ -1,0 +1,77 @@
+import React, { useState } from 'react';
+import { Logo } from '../components/Logo';
+
+interface LoginScreenProps {
+  onLogin: (email: string, password: string) => void;
+  onSignUp: () => void;
+  onForgotPassword?: (email: string) => void;
+}
+
+const LoginScreen: React.FC<LoginScreenProps> = ({ onLogin, onSignUp, onForgotPassword }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  return (
+    <div className="flex flex-col h-screen w-full px-8 pt-20 pb-12 items-center justify-between animate-in fade-in duration-700">
+      <div className="flex flex-col items-center w-full mt-10">
+        <Logo />
+        <h1 className="text-3xl font-serif font-bold tracking-tight text-duelist-black mb-2">Duelist</h1>
+        <p className="text-zinc-400 text-sm font-light tracking-wide">Enter the Arena of Choice</p>
+      </div>
+
+      <div className="w-full space-y-4">
+        <div className="space-y-4">
+          <div className="relative">
+            <input 
+              className="w-full bg-duelist-input-bg input-border rounded-xl py-4 px-5 text-duelist-black placeholder-zinc-400 focus:outline-none transition-all" 
+              placeholder="Email" 
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="relative">
+            <input 
+              className="w-full bg-duelist-input-bg input-border rounded-xl py-4 px-5 text-duelist-black placeholder-zinc-400 focus:outline-none transition-all" 
+              placeholder="Password" 
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </div>
+        <button 
+          onClick={() => onLogin(email || 'guest@duelist.com', password)}
+          className="w-full bg-duelist-black text-white font-bold py-4 rounded-xl ios-shadow active:scale-[0.98] transition-transform text-center mt-6"
+        >
+          Sign In
+        </button>
+        <div className="text-center pt-2">
+          <button
+            onClick={() => onForgotPassword?.(email)}
+            className="text-[10px] uppercase tracking-[0.2em] text-duelist-black font-serif font-semibold hover:opacity-70 transition-opacity"
+          >
+            FORGOT PASSWORD?
+          </button>
+        </div>
+      </div>
+
+      <div className="w-full text-center space-y-6">
+        <div className="flex items-center gap-4 px-4">
+          <div className="h-[0.5px] flex-1 bg-zinc-200"></div>
+          <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">New Associate</span>
+          <div className="h-[0.5px] flex-1 bg-zinc-200"></div>
+        </div>
+        <button 
+          onClick={onSignUp}
+          className="text-[10px] uppercase tracking-[0.2em] text-duelist-black font-serif font-bold hover:opacity-70 transition-opacity"
+        >
+          CREATE ACCOUNT
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default LoginScreen;
+

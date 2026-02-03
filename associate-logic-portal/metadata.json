@@ -1,0 +1,6 @@
+
+{
+  "name": "Associate Logic Portal",
+  "description": "A high-fidelity logic performance dashboard and decision analysis tool for advanced associates.",
+  "requestFramePermissions": ["camera"]
+}

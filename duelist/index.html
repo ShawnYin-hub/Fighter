@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <title>Duelist</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        'gallery-white': '#F9F9F9',
+                        'light-gold': '#D4C5A3',
+                        'soft-gold-glow': 'rgba(212, 197, 163, 0.4)',
+                        'ios-gray': '#8E8E93',
+                        'off-white': '#F2F2F7',
+                        'deep-charcoal': '#1C1C1E',
+                        'pure-white': '#FFFFFF',
+                        'win-gold': '#C5A059',
+                    },
+                    fontFamily: {
+                        sans: ["-apple-system", "BlinkMacSystemFont", "San Francisco", "Helvetica Neue", "Inter", "sans-serif"],
+                        serif: ["Noto Serif SC", "serif"],
+                    },
+                    boxShadow: {
+                        'ios': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'soft': '0 10px 30px rgba(0, 0, 0, 0.05)',
+                        'gold-glow': '0 0 15px rgba(197, 160, 89, 0.2)',
+                        'card-left': '0 20px 40px rgba(0, 0, 0, 0.2)',
+                        'card-right': '0 20px 40px rgba(0, 0, 0, 0.08)',
+                    }
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        .glass-light {
+            background: rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .concentric-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            border-radius: 50%;
+        }
+        .mic-glow {
+            box-shadow: 0 0 35px 5px var(--soft-gold-glow);
+        }
+        .glass-comment {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .vs-badge {
+            background: #000000;
+            color: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+        .win-path {
+            stroke: #C5A059;
+            stroke-width: 2.5;
+        }
+        .lose-path {
+            stroke: #E5E5E5;
+            stroke-width: 1.5;
+            stroke-dasharray: 4 4;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes pulse-ring {
+            0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.1; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.2; }
+            100% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.1; }
+        }
+        .animate-ring {
+            animation: pulse-ring 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-gallery-white text-black font-sans h-screen overflow-hidden">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

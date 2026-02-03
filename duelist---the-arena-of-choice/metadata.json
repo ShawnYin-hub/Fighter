@@ -1,0 +1,8 @@
+
+{
+  "name": "Duelist - The Arena of Choice",
+  "description": "A premium, minimal decision-making platform where choices are pitted against each other in 'Duels'. Using Gemini AI to analyze pros, cons, and determine the ultimate victor in any dilemma.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Duelist</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gallery-white': '#F8F8F8',
+                        'duelist-black': '#000000',
+                        'duelist-gold': '#D4AF37',
+                        'duelist-input-bg': '#F1F1F1',
+                        'duelist-gallery': '#F9F9F9',
+                    },
+                    fontFamily: {
+                        sans: ["-apple-system", "BlinkMacSystemFont", "San Francisco", "Helvetica Neue", "Inter", "sans-serif"],
+                        serif: ["Noto Serif SC", "serif"],
+                    },
+                },
+            },
+        };
+    </script>
+    <style type="text/tailwindcss">
+        @layer components {
+            .logo-glow {
+                filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.25));
+            }
+            .ios-shadow {
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            .input-border {
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+            .ios-input {
+                background-color: #F1F1F1;
+                border: 1px solid rgba(0, 0, 0, 0.08);
+                transition: all 0.2s ease;
+            }
+            .ios-input:focus {
+                background-color: #FFFFFF;
+                border-color: #000000;
+                box-shadow: 0 0 0 1px #000000;
+            }
+            .badge-glow {
+                filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.4));
+            }
+        }
+        body {
+            background-color: #F8F8F8;
+            color: #000000;
+        }
+        input::placeholder {
+            color: #A1A1AA;
+            font-weight: 300;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="antialiased">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

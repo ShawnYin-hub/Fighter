@@ -1,0 +1,9 @@
+
+{
+  "name": "Duelist Decision Journey",
+  "description": "An elegant decision-making companion that helps you resolve 'chaos' through AI-powered comparisons, genealogy maps, and strategic insights.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
