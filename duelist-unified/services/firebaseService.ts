@@ -30,14 +30,14 @@ import {
 } from 'firebase/firestore';
 import { Decision } from '../types';
 
-// Firebase 配置（需要用户提供）
+// Firebase 配置（使用你提供的 Web App 配置，避免在 GitHub Pages 上因为环境变量为空导致初始化失败）
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY || '',
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || '',
-  projectId: process.env.FIREBASE_PROJECT_ID || '',
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || '',
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: process.env.FIREBASE_APP_ID || ''
+  apiKey: "AIzaSyCeMjuM0yFhlmQQKhcqaNS0zLH_GF7uPag",
+  authDomain: "duelist-51d98.firebaseapp.com",
+  projectId: "duelist-51d98",
+  storageBucket: "duelist-51d98.firebasestorage.app",
+  messagingSenderId: "169277114075",
+  appId: "1:169277114075:web:963610603c9afc97862efe",
 };
 
 // 初始化 Firebase
